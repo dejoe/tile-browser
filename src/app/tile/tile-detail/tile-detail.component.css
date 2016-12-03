@@ -1,0 +1,11 @@
+.tile-frame {
+    width: 100%;
+    height: 100%;
+}
+.tile-container {
+    max-height:400px;
+    height: 200px; 
+}
+.payloadURL {
+    width: 100%;
+}

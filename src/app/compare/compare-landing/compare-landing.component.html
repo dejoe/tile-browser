@@ -1,0 +1,12 @@
+<vaadin-split-layout id="simple">
+  <div class="sidebar">
+    <label>Number of screens that you want to compare</label>
+    <input type="number" [ngModel]="tileSize" (ngModelChange)="onChange($event)"/>
+    
+  </div>
+  <div class="main">
+    <div *ngFor="let abcd of dummyArray" [ngStyle]="{'width': (100/dummyArray.length) + '%' }">
+      <app-tile-list ></app-tile-list>
+    </div>
+  </div>
+</vaadin-split-layout>

@@ -1,0 +1,11 @@
+<form (ngSubmit)="onSubmit()" #configForm="ngForm">
+  <div class="form-group">
+    <label for="tileSrc">Tile Source</label>
+    <input type="text" class="form-control" id="tileSrc" required  [(ngModel)]="config.tileSrc" name="tileSrc" #tileSrc="ngModel">
+    <div [hidden]="tileSrc.valid || tileSrc.pristine"
+          class="alert alert-danger">
+      Title Source is required
+    </div>
+  </div>
+  <button type="submit" class="btn btn-default" [disabled]="!configForm.form.valid">Submit</button>
+</form>

@@ -1,0 +1,10 @@
+<div *ngIf="tile">
+  <input class="payloadURL" type="text" [(ngModel)]="payloadURL" name="payloadURL" />  
+  <div class="tile-container">
+    <iframe class="tile-frame"
+      mwlResizable
+      [resizeEdges]="{bottom: true, right: true, top: true, left: true}"
+      [src]="payloadURL | safe" >Loading</iframe>
+  </div>
+  <h2>{{tile.title}}</h2>
+</div>
