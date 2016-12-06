@@ -1,6 +1,9 @@
-<vaadin-combo-box [label]="comboLabel" [(value)]="selectedTileIndex" [items]="items"></vaadin-combo-box>
+<vaadin-combo-box [label]="comboLabel" 
+                  (selected-item-changed) = "setTileIndex($event)" 
+                  [items]="items"></vaadin-combo-box>
 
   <div *ngIf="selectedTileIndex">
     <!--{{tiles[selectedTileIndex].title}}-->
     <app-tile-detail [tile]="tiles[selectedTileIndex]"></app-tile-detail>
   </div>
+  <!--[(value)]="selectedTileIndex"-->

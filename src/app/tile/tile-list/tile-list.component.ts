@@ -9,6 +9,8 @@ import { AppGlobalService } from '../../app-global.service';
   styleUrls: ['./tile-list.component.css']
 })
 export class TileListComponent implements OnInit {
+  @Input() heightFilter:any;
+  @Input() widthFilter:any;
 
   private tileSrc: string;
   tiles: Tile[] =[];
@@ -19,6 +21,14 @@ export class TileListComponent implements OnInit {
 
   constructor(private tileService: TileService,private appGlobalService: AppGlobalService) { }
 
+  setTileIndex ($event){
+    console.log($event);
+    if($event.detail.value){
+      this.selectedTileIndex = this.tiles.map( (el) => el.title )
+                                         .indexOf($event.detail.value.label);
+    }
+    
+  }
   getTiles():void{
     this.tileService.getTiles(this.tileSrc)
         .subscribe(
@@ -33,17 +43,26 @@ export class TileListComponent implements OnInit {
   }
 
   setItems() {
-    this.items = []; 
-    for (let i in this.tiles){
+    this.items = [];
+    let tempTiles :Array<Tile> = this.tiles;
+    if (this.heightFilter){
+      tempTiles = tempTiles.filter( (tile) => tile.field_tile_height_value == this.heightFilter ? true : false);
+    }
+    if (this.widthFilter){
+      tempTiles = tempTiles.filter( (tile) => tile.field_tile_width_percentage == this.widthFilter ? true : false);
+    }
+    for (let i in tempTiles){
       this.items.push({
-        "label": this.tiles[i].title,
+        "label": tempTiles[i].title,
         "value": i
       });
     }
-    return this.items;
   }
   ngOnInit() {
     this.tileSrc = this.appGlobalService.getTileSrc();
     this.getTiles();
+  }
+  ngOnChanges(){
+    this.setItems();
   }
 }

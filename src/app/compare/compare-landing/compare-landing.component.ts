@@ -11,6 +11,8 @@ export class CompareLandingComponent implements OnInit {
   tileOptions:any[];
   constructor() { }
 
+  filterHeight:any;
+  filterWidth:any;
   ngOnInit() {    
     //this.tileOptions= [{ label: '2', value: 2 },{ label: '3', value: 3 },{ label: '4', value: 4 }]
   }

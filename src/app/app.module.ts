@@ -17,6 +17,8 @@ import { SafePipe } from './utils/safe.pipe';
 import { ConfigGuard } from './utils/config-guard';
 import { CompareLandingComponent } from './compare/compare-landing/compare-landing.component';
 import {AppGlobalService} from './app-global.service';
+import { WidthfilterPipe } from './utils/widthfilter.pipe';
+import { HeightfilterPipe } from './utils/heightfilter.pipe';
 
 
 const appRoutes: Routes = [
@@ -36,7 +38,9 @@ const appRoutes: Routes = [
     SafePipe,
     PolymerElement('vaadin-combo-box'),
     PolymerElement('vaadin-split-layout'),
-    CompareLandingComponent
+    CompareLandingComponent,
+    WidthfilterPipe,
+    HeightfilterPipe
   ],
   imports: [
     RouterModule.forRoot(

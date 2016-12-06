@@ -1,12 +1,30 @@
 <vaadin-split-layout id="simple">
   <div class="sidebar">
-    <label>Number of screens that you want to compare</label>
-    <input type="number" [ngModel]="tileSize" (ngModelChange)="onChange($event)"/>
-    
+    <div class="formItems">
+      <label>screens to compare</label>
+      <input type="number" [ngModel]="tileSize" (ngModelChange)="onChange($event)" min="1" max="4"/>
+    </div>
+    <div class="formItems">
+      <label>Filter Height</label>
+      <select [(ngModel)]="filterHeight">
+        <option value=".5">.5</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+      </select>
+    </div>
+    <div class="formItems">
+      <label>Filter Width</label>
+      <select [(ngModel)]="filterWidth">
+        <option value="25">25%</option>
+        <option value="33">33%</option>
+        <option value="50">50%</option>
+        <option value="100">100%</option>
+      </select>
+    </div>
   </div>
   <div class="main">
     <div *ngFor="let abcd of dummyArray" [ngStyle]="{'width': (100/dummyArray.length) + '%' }">
-      <app-tile-list ></app-tile-list>
+      <app-tile-list [heightFilter]="filterHeight" [widthFilter]="filterWidth" ></app-tile-list>
     </div>
   </div>
 </vaadin-split-layout>
