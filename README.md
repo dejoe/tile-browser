@@ -29,3 +29,8 @@ Run `ng github-pages:deploy` to deploy to Github Pages.
 ## Further help
 
 To get more help on the `angular-cli` use `ng --help` or go check out the [Angular-CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+## VAADIN INSTRUCTIONS
+Install this if there are issues with bower components. Use --force if there are further issues.
+    bower install vaadin-split-layout
+    bower install vaadin-combo-box
